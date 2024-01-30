@@ -7,7 +7,11 @@ int main() {
         q1.enqueue(i);
     }
     q1.print();
+    Queue<int> q2(q1);
     q1.clear();
+    q1.print();
+    q2.print();
+    q1 = q2;
     q1.print();
     return 0;
 }

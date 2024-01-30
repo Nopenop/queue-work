@@ -9,6 +9,32 @@ Queue<T>::Queue(unsigned capacity) {
     queueSize = 0;
 }
 
+template<typename T>
+Queue<T>::Queue(const Queue<T> & other){
+    capacity = other.capacity;
+    data = new T[capacity];
+    frnt = other.frnt;
+    bck =frnt;
+    do{
+        enqueue(*(other.data + bck%capacity));
+    } while (bck != other.bck);
+}
+
+template<typename T>
+Queue<T> & Queue<T>::operator=(const Queue<T> & other){
+    clear();
+    frnt = other.frnt;
+    bck = frnt;
+    do{
+        enqueue(*(other.data + bck%capacity));
+    } while (bck != other.bck);
+    return *this;
+}
+
+template<typename T>
+Queue<T>::~Queue() {
+    delete[] data;
+}
 
 template<typename T>
 unsigned Queue<T>::size() const{

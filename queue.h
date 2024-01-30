@@ -5,7 +5,9 @@ template <typename T>
 class Queue {
     public:
     Queue(unsigned capacity=10);
-
+    Queue(const Queue<T> & other);
+    ~Queue();
+    Queue<T>& operator=(const Queue<T> & other);
     unsigned size() const;
     bool empty() const;
 
